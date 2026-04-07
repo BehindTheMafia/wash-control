@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jehova es mi Pastor - POS | Gestión Premium de Autolavados</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,400;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,400;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Material Symbols -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,11 +49,11 @@
     </script>
 
     <style>
-        body { 
-            background: #020617; 
-            color: #f8fafc; 
-            font-family: 'Inter', sans-serif; 
-            -webkit-font-smoothing: antialiased; 
+        body {
+            background: #020617;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
@@ -59,7 +63,7 @@
             inset: -20%;
             width: 140%;
             height: 140%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
                 linear-gradient(rgba(251, 191, 36, 0.08) 2px, transparent 2px),
@@ -68,8 +72,8 @@
             background-position: center auto;
             z-index: 0;
             pointer-events: none;
-            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
-            mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
+            mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
         }
 
         .cursor-glow {
@@ -83,7 +87,7 @@
             z-index: 1;
             border-radius: 50%;
         }
-        
+
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             vertical-align: middle;
@@ -196,20 +200,43 @@
             transform: translateX(0);
         }
 
-        .reveal { opacity: 0; transform: translateY(40px); }
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+        }
 
         @keyframes scaleUp {
-            from { opacity: 0; transform: scale(0.95) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #fbbf24; }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #fbbf24;
+        }
     </style>
 </head>
+
 <body>
     <div id="root"></div>
 
@@ -223,7 +250,7 @@
         const Nav = () => (
             <header className="fixed top-0 w-full z-[100] bg-[#020617]/70 backdrop-blur-2xl border-b border-white/5 py-4 px-6 md:px-8">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
-                    
+
                     {/* 1. Brand Logo (Left) */}
                     <div className="w-1/3 flex justify-start">
                         <div className="flex items-center gap-4 cursor-pointer">
@@ -234,7 +261,7 @@
                                 <h1 className="text-lg font-black text-white italic tracking-tighter uppercase leading-none">
                                     Hyper <span className="text-brand-yellow">Bee</span>
                                 </h1>
-                                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 mt-1">Wash Control</span>
+                                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 mt-1 italic">Software de Control</span>
                             </div>
                         </div>
                     </div>
@@ -242,13 +269,13 @@
                     {/* 2. Desktop Menu (Center) */}
                     <nav className="w-1/3 hidden md:flex items-center justify-center gap-1 lg:gap-3">
                         {[
-                            { name: 'Módulos', id: 'modulos' },
-                            { name: 'Beneficios', id: 'features' },
-                            { name: 'Inversión', id: 'precios' }
+                            { name: 'Solución', id: 'modulos' },
+                            { name: 'Por qué nosotros', id: 'features' },
+                            { name: 'Planes', id: 'precios' }
                         ].map((item) => (
-                            <a 
+                            <a
                                 key={item.id}
-                                href={`#${item.id}`} 
+                                href={`#${item.id}`}
                                 onClick={(e) => {
                                     e.preventDefault();
                                     document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
@@ -280,30 +307,17 @@
         );
 
         const Hero = () => {
-            const gridRef = useRef(null);
             const glowRef = useRef(null);
 
             useEffect(() => {
                 const handleMouseMove = (e) => {
                     const { clientX, clientY } = e;
-                    
-                    // Parallax shift constraint
-                    const xGrid = (clientX / window.innerWidth - 0.5) * -40; 
-                    const yGrid = (clientY / window.innerHeight - 0.5) * -40; 
-                    
-                    gsap.to(gridRef.current, {
-                        x: xGrid,
-                        y: yGrid,
-                        duration: 1.5,
-                        ease: "power2.out"
-                    });
-
                     const hero = document.getElementById("hero-section");
-                    if(hero) {
+                    if (hero && glowRef.current) {
                         const rect = hero.getBoundingClientRect();
                         const glowX = clientX - rect.left;
                         const glowY = clientY - rect.top;
-                        
+
                         gsap.to(glowRef.current, {
                             x: glowX,
                             y: glowY,
@@ -316,34 +330,52 @@
                 };
 
                 window.addEventListener('mousemove', handleMouseMove);
-                
-                if(glowRef.current) {
+                if (glowRef.current) {
                     gsap.set(glowRef.current, { x: window.innerWidth / 2, y: window.innerHeight / 2, xPercent: -50, yPercent: -50 });
                 }
-
                 return () => window.removeEventListener('mousemove', handleMouseMove);
             }, []);
 
             return (
-                <section id="hero-section" className="pt-48 pb-32 px-6 relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-brand-deep">
-                    {/* Interactive Grid & Glow */}
-                    <div ref={gridRef} className="grid-pattern"></div>
+                <section id="hero-section" className="pt-48 pb-32 px-6 relative min-h-screen flex items-center justify-center overflow-hidden bg-brand-deep">
+                    {/* Background Grid (Static) & Glow (Animated) */}
+                    <div className="grid-pattern"></div>
                     <div ref={glowRef} className="cursor-glow"></div>
-                    
-                    <div className="max-w-7xl mx-auto text-center relative z-10 flex flex-col items-center">
 
-                        <h1 className="text-5xl md:text-7xl lg:text-[110px] text-white font-black tracking-tighter mb-10 leading-[0.9] reveal uppercase">
-                            CONTROL <span className="text-brand-yellow">TOTAL</span> DE TU 
-                            AUTOLAVADO.
-                        </h1>
-                        <p className="max-w-3xl mx-auto text-xl md:text-2xl text-slate-400 font-medium mb-16 reveal leading-relaxed">
-                            Optimiza ingresos, gestiona nóminas y monitorea tu negocio en tiempo real con una interfaz diseñada para la velocidad.
-                        </p>
-                        <div className="flex flex-col md:flex-row justify-center gap-8 reveal">
-                            <button className="btn-primary px-14 py-6 rounded-[24px] font-black text-xl uppercase tracking-widest flex items-center justify-center gap-4 group">
-                                <span className="z-10 relative">Solicitar Demo</span>
-                            </button>
+                    <div className="max-w-[1536px] w-full mx-auto pt-10 lg:pt-20 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center px-6 lg:px-12">
+
+                        {/* Text Content */}
+                        <div className="flex flex-col items-center lg:items-start text-center lg:text-left z-20">
+                            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 reveal">
+                                <Icon name="verified" className="text-brand-yellow text-sm" />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-brand-yellow">Sistema #1 para Dueños de Autolavados</span>
+                            </div>
+                            <h1 className="text-5xl md:text-7xl lg:text-[80px] xl:text-[95px] text-white font-black tracking-tighter mb-8 leading-[0.9] reveal uppercase">
+                                DETÉN LAS <span className="text-brand-yellow">FUGAS</span> DE DINERO EN TU NEGOCIO.
+                            </h1>
+                            <p className="max-w-2xl text-xl md:text-2xl text-slate-400 font-medium mb-12 reveal leading-relaxed">
+                                El sistema POS que blinda tu caja, automatiza tu nómina y te da el control total desde tu celular. <span className="text-white">Diseñado para eliminar el robo y maximizar ganancias.</span>
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-6 reveal w-full sm:w-auto">
+                                <button className="btn-primary px-12 py-5 rounded-[24px] font-black text-lg uppercase tracking-widest flex items-center justify-center gap-4 group">
+                                    <span className="z-10 relative">Comenzar a Ganar Más</span>
+                                </button>
+                            </div>
                         </div>
+
+                        {/* Macbook Mockup */}
+                        <div className="w-full relative reveal z-10 flex justify-center lg:justify-end">
+                            <div className="relative w-full max-w-3xl">
+                                {/* Intense glow behind the laptop */}
+                                <div className="absolute inset-0 bg-brand-yellow/15 blur-[100px] rounded-full pointer-events-none -z-10 w-[90%] h-[90%] left-[5%] top-[5%]"></div>
+                                <img
+                                    src="./images/Macbook Mockup Front View UV (1).png"
+                                    alt="Sistema en Acción"
+                                    className="w-full h-auto object-contain drop-shadow-[0_50px_100px_rgba(0,0,0,0.8)] lg:scale-[1.10] origin-center"
+                                />
+                            </div>
+                        </div>
+
                     </div>
                 </section>
             );
@@ -351,19 +383,19 @@
 
         const ModuleCard = ({ icon, title, description, badge, image, onImageClick }) => (
             <div className="glass-card rounded-[2rem] p-4 flex flex-col h-full reveal group overflow-hidden relative">
-                
+
                 {/* Image Placeholder / Screenshot Container */}
-                <div 
+                <div
                     className="w-full relative mb-8 rounded-2xl overflow-hidden border border-white/5 bg-[#020617] group-hover:border-brand-yellow/30 transition-all duration-700 cursor-zoom-in"
                     onClick={() => onImageClick && onImageClick(image)}
                 >
-                    <img 
-                        src={image} 
-                        alt={title} 
+                    <img
+                        src={image}
+                        alt={title}
                         className="w-full h-auto object-cover opacity-80 group-hover:scale-[1.02] group-hover:opacity-100 transition-all duration-700"
                         onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
                     />
-                    
+
                     {/* Hover Overlay: Clic para ver */}
                     <div className="absolute inset-0 bg-brand-deep/50 backdrop-blur-[2px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
                         <div className="bg-brand-yellow text-brand-deep px-6 py-3 rounded-full font-black uppercase text-[10px] tracking-widest flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-xl shadow-brand-yellow/20">
@@ -395,7 +427,7 @@
 
         const PriceCard = ({ title, price, subtitle, features, primary = false }) => (
             <div className={`h-full relative p-10 md:p-12 rounded-[2rem] flex flex-col group overflow-hidden ${primary ? 'bg-[#050b14] border border-brand-yellow/20 shadow-[0_30px_60px_-15px_rgba(251,191,36,0.1)] z-10' : 'bg-transparent border border-white/5 hover:bg-white/[0.02]'} reveal transition-all duration-700`}>
-                
+
                 {/* Ambience Soft Glows */}
                 {primary && (
                     <>
@@ -403,32 +435,32 @@
                         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none" />
                     </>
                 )}
-                
+
                 {/* Badge Alignment / Spacer */}
                 <div className={`mb-8 ${primary ? '' : 'opacity-0 select-none pointer-events-none'}`}>
                     <span className="inline-flex py-1.5 px-3 rounded-full bg-brand-yellow/[0.05] border border-brand-yellow/20 text-[9px] font-black uppercase tracking-[0.3em] text-brand-yellow">
                         {primary ? 'Acceso Total' : 'Placeholder'}
                     </span>
                 </div>
-                
+
                 <h4 className={`text-[10px] font-bold uppercase tracking-[0.4em] mb-4 ${primary ? 'text-white' : 'text-slate-500'}`}>{title}</h4>
                 <div className="flex items-baseline gap-2 mb-2">
                     <span className={`text-6xl md:text-8xl font-black tracking-tighter ${primary ? 'text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-100' : 'text-white'}`}>{price}</span>
                     <span className={`text-sm font-bold uppercase tracking-[0.2em] ${primary ? 'text-brand-yellow/60' : 'text-slate-600'}`}>USD</span>
                 </div>
                 <p className={`font-medium text-sm mb-12 ${primary ? 'text-slate-400' : 'text-slate-500'}`}>{subtitle}</p>
-                
+
                 <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12"></div>
 
                 <ul className="space-y-6 mb-14 flex-1">
                     {features.map((f, i) => (
                         <li key={i} className="flex items-start gap-4">
-                            <Icon name="check" className={`text-xl mt-0 shadow-sm ${primary ? "text-brand-yellow drop-shadow-[0_0_8px_rgba(251,191,36,0.3)]" : "text-white/20"}`} /> 
+                            <Icon name="check" className={`text-xl mt-0 shadow-sm ${primary ? "text-brand-yellow drop-shadow-[0_0_8px_rgba(251,191,36,0.3)]" : "text-white/20"}`} />
                             <span className={`text-sm md:text-[15px] leading-relaxed font-light ${primary ? 'text-slate-300' : 'text-slate-400'}`}>{f}</span>
                         </li>
                     ))}
                 </ul>
-                
+
                 <button className={`w-full py-5 rounded-2xl font-black text-xs uppercase tracking-[0.25em] transition-all duration-500 bg-transparent border relative overflow-hidden group/btn ${primary ? 'border-brand-yellow/50 text-brand-yellow hover:border-brand-yellow hover:bg-brand-yellow hover:text-brand-deep hover:shadow-[0_0_30px_rgba(251,191,36,0.3)]' : 'border-white/10 text-white hover:bg-white hover:text-black'}`}>
                     <span className="relative z-10">{primary ? 'Comenzar Ahora' : 'Añadir al plan'}</span>
                 </button>
@@ -455,22 +487,22 @@
 
             return (
                 <div className="flex flex-col min-h-screen">
-                    
+
                     {/* LIGHTBOX POPUP */}
                     {lightboxImg && (
-                        <div 
+                        <div
                             className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-all"
                             onClick={() => setLightboxImg(null)}
                         >
                             {/* Premium External Close Button */}
-                            <button 
+                            <button
                                 className="absolute top-6 right-6 md:top-10 md:right-10 flex items-center gap-2 text-slate-400 hover:text-brand-yellow transition-colors group z-[210] uppercase tracking-[0.2em] font-black text-[10px]"
                                 onClick={() => setLightboxImg(null)}
                             >
                                 Cerrar <Icon name="close" className="text-3xl group-hover:rotate-90 transition-transform duration-500" />
                             </button>
 
-                            <div 
+                            <div
                                 className="relative max-w-7xl w-full max-h-[95vh] rounded-[2rem] overflow-hidden shadow-[0_0_150px_rgba(0,0,0,0.5)] flex items-center justify-center pointer-events-none"
                                 style={{ animation: 'scaleUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards' }}
                                 onClick={(e) => e.stopPropagation()}
@@ -489,39 +521,39 @@
                     <section id="modulos" className="py-32 px-6 px-6">
                         <div className="max-w-7xl mx-auto">
                             <div className="mb-20 text-center">
-                                <span className="text-brand-yellow font-black uppercase tracking-[0.4em] text-[10px]">Experiencia de Usuario</span>
-                                <h2 className="text-4xl md:text-6xl font-black text-white mt-4 mb-6">MODULOS INTELIGENTES</h2>
+                                <span className="text-brand-yellow font-black uppercase tracking-[0.4em] text-[10px]">Estrategia de Crecimiento</span>
+                                <h2 className="text-4xl md:text-6xl font-black text-white mt-4 mb-6 uppercase">TECNOLOGÍA QUE TRABAJA PARA TI</h2>
                                 <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
-                                    Diseñado específicamente para el flujo de trabajo de un autolavado moderno.
+                                    Deja de perder tiempo en cálculos manuales y auditorías interminables. Nuestro sistema automatiza lo difícil para que tú te enfoques en escalar.
                                 </p>
                             </div>
 
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                                <ModuleCard 
-                                    icon="dashboard" 
-                                    title="Panel Inteligente" 
-                                    description="Visualización de ingresos diarios, flujo de vehículos y ticket promedio en tiempo real."
+                                <ModuleCard
+                                    icon="dashboard"
+                                    title="Control 24/7"
+                                    description="Mira cuánto has vendido, cuántos autos han entrado y qué empleados están activos desde cualquier lugar del mundo."
                                     image="./images/panel de control.jpeg"
                                     onImageClick={setLightboxImg}
                                 />
-                                <ModuleCard 
-                                    icon="payments" 
-                                    title="Gestión de Nómina" 
-                                    description="Cálculo automático por ticket, comisión, diario o semanal. Gestión de propinas y descuentos."
+                                <ModuleCard
+                                    icon="payments"
+                                    title="Nómina Blindada"
+                                    description="Cálculos automáticos por comisión o tarifa fija. Elimina errores humanos y evita discusiones con tu personal."
                                     image="./images/nomina.jpeg"
                                     onImageClick={setLightboxImg}
                                 />
-                                <ModuleCard 
-                                    icon="account_balance_wallet" 
-                                    title="Cierre de Caja" 
-                                    description="Comparativa de efectivo real vs. sistema para evitar faltantes. Cierre blindado e instantáneo."
+                                <ModuleCard
+                                    icon="account_balance_wallet"
+                                    title="Cierre de Caja Flash"
+                                    description="Cierra caja en menos de 1 minuto. El sistema te dice exactamente cuánto debe haber. Cero faltantes, cero excusas."
                                     image="./images/cierre de caja.jpeg"
                                     onImageClick={setLightboxImg}
                                 />
-                                <ModuleCard 
-                                    icon="settings_bluetooth" 
-                                    title="Configuración Avanzada" 
-                                    description="Conexión de impresoras Bluetooth (58mm/80mm) y catálogo de servicios personalizado por tipo de vehículo (Sedán, SUV, Moto)."
+                                <ModuleCard
+                                    icon="settings_bluetooth"
+                                    title="Servicio Inteligente"
+                                    description="Impresión de tickets automática y catálogo de servicios optimizado. Atiende más autos en menos tiempo."
                                     image="./images/configuracion.jpeg"
                                     onImageClick={setLightboxImg}
                                 />
@@ -533,11 +565,11 @@
                     <section id="features" className="py-32 bg-[#020617] relative border-y border-white/5">
                         {/* subtle grid background */}
                         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)] pointer-events-none"></div>
-                        
+
                         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
                             <div className="text-center mb-20 reveal">
                                 <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-[1.1] tracking-tighter uppercase">
-                                    Eficiencia radical <br/> en cada <span className="font-black text-brand-yellow px-2  titlecase">DETALLE.</span>
+                                    Eficiencia radical <br /> en cada <span className="font-black text-brand-yellow px-2  titlecase">DETALLE.</span>
                                 </h2>
                                 <p className="text-slate-400 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed font-light">
                                     Elimina cuellos de botella y maximiza la rentabilidad de cada turno con herramientas diseñadas para la velocidad.
@@ -546,15 +578,15 @@
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {[
-                                    {icon: 'timer', title: 'Registro en 10 segundos', desc: "Registra un 'Nuevo Ticket' en menos de 10 segundos. No hagas esperar a tus clientes."},
-                                    {icon: 'security', title: 'Caja Blindada', desc: "Deja de perder dinero por mala administración. Con nuestro cierre de caja, cada centavo está contabilizado."},
-                                    {icon: 'groups', title: 'Equipo Motivado', desc: "Motiva a tus lavadores con pagos precisos y transparentes calculados automáticamente."},
-                                    {icon: 'cloud_sync', title: 'Sincronización Local', desc: "El sistema sigue funcionando aunque falle el internet. Sincronización nube automática."}
+                                    { icon: 'timer', title: 'Registro en 10 segundos', desc: "Registra un 'Nuevo Ticket' en menos de 10 segundos. No hagas esperar a tus clientes." },
+                                    { icon: 'security', title: 'Caja Blindada', desc: "Deja de perder dinero por mala administración. Con nuestro cierre de caja, cada centavo está contabilizado." },
+                                    { icon: 'groups', title: 'Equipo Motivado', desc: "Motiva a tus lavadores con pagos precisos y transparentes calculados automáticamente." },
+                                    { icon: 'cloud_sync', title: 'Sincronización Local', desc: "El sistema sigue funcionando aunque falle el internet. Sincronización nube automática." }
                                 ].map((f, i) => (
                                     <div key={i} className="glass-card p-8 md:p-10 rounded-[2rem] border border-white/5 hover:border-brand-yellow/30 bg-[#0A0F1C] group transition-all duration-500 hover:-translate-y-2 relative overflow-hidden reveal">
                                         {/* Top Accent Line */}
                                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-yellow/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        
+
                                         <div className="w-14 h-14 bg-[#121A2F] rounded-2xl flex items-center justify-center group-hover:bg-brand-yellow/10 transition-colors mb-8 border border-white/5 group-hover:border-brand-yellow/20">
                                             <Icon name={f.icon} className="text-3xl text-slate-400 group-hover:text-brand-yellow transition-colors" />
                                         </div>
@@ -573,18 +605,18 @@
                                 <span className="inline-flex items-center gap-2 mb-6 text-brand-yellow font-black uppercase tracking-[0.4em] text-[10px]">
                                     <span className="w-8 h-[1px] bg-brand-yellow/50"></span> Modelos de Negocio <span className="w-8 h-[1px] bg-brand-yellow/50"></span>
                                 </span>
-                                <h2 className="text-5xl md:text-7xl font-black text-white mt-4 mb-6 tracking-tighter">
-                                    INVERSION <span className="font-black text-brand-yellow px-2">INTELIGENTE.</span>
+                                <h2 className="text-5xl md:text-7xl font-black text-white mt-4 mb-6 tracking-tighter uppercase">
+                                    EL SOFTWARE QUE <span className="font-black text-brand-yellow px-2">SE PAGA SOLO.</span>
                                 </h2>
                                 <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed font-light">
-                                    Precios claros y sin sorpresas. Invierte en el sistema que multiplicará la eficiencia de tu autolavado desde el día uno.
+                                    Eliminar un solo error de caja al mes paga tu suscripción. Invierte en tranquilidad y control absoluto.
                                 </p>
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-10 lg:gap-8 max-w-5xl mx-auto items-stretch">
-                                <PriceCard 
-                                    title="Implementación Inicial" 
-                                    price="$400" 
+                                <PriceCard
+                                    title="Implementación Inicial"
+                                    price="$400"
                                     subtitle="Pago único para despliegue completo de la infraestructura digital"
                                     features={[
                                         "Instalación y configuración del sistema",
@@ -594,10 +626,10 @@
                                         "Soporte prioritario el primer mes"
                                     ]}
                                 />
-                                <PriceCard 
+                                <PriceCard
                                     primary
-                                    title="Servicio Mensual" 
-                                    price="$50" 
+                                    title="Servicio Mensual"
+                                    price="$50"
                                     subtitle="Acceso ininterrumpido a la plataforma y todas sus actualizaciones"
                                     features={[
                                         "Hosting dedicado de ultra alta velocidad",
@@ -614,12 +646,12 @@
 
                     {/* CTA FINAL */}
                     <section className="py-48 px-6 relative overflow-hidden bg-[#020617] border-t border-white/5">
-                        
+
                         {/* Background Image Setup */}
                         <div className="absolute inset-0 z-0">
-                            <img 
-                                src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=2560" 
-                                alt="Hyper Bee Wash Control Environment" 
+                            <img
+                                src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=2560"
+                                alt="Hyper Bee Wash Control Environment"
                                 className="w-full h-full object-cover opacity-30 mix-blend-luminosity"
                             />
                             {/* Seamless fade to deep background color */}
@@ -630,29 +662,29 @@
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
                             <div className="w-[800px] h-[300px] bg-brand-yellow/15 blur-[120px] rounded-full mix-blend-screen opacity-80"></div>
                         </div>
-                        
+
                         {/* Technical Blueprint Grid for CTA */}
                         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)] pointer-events-none z-0"></div>
 
                         <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center">
 
-                            <h2 className="text-5xl md:text-7xl lg:text-[100px] text-white font-black tracking-tighter mb-8 leading-[0.9] reveal">
-                                LLEVA TU NEGOCIO <br/> 
-                                AL <span className="font-black text-brand-yellow px-2">SIGUIENTE</span> NIVEL.
+                            <h2 className="text-5xl md:text-7xl lg:text-[100px] text-white font-black tracking-tighter mb-8 leading-[0.9] reveal uppercase">
+                                DEJA DE PERDER <br />
+                                DINERO <span className="font-black text-brand-yellow px-2">HOY MISMO.</span>
                             </h2>
-                            
+
                             <p className="max-w-2xl text-lg md:text-xl text-slate-400 font-light mb-14 reveal leading-relaxed">
-                                Únete a la nueva generación de administradores que están triplicando la eficiencia de su autolavado con nuestra tecnología.
+                                Únete a los administradores que ya están triplicando la eficiencia y eliminando los robos en sus autolavados con Hyper Bee.
                             </p>
-                            
+
                             <div className="flex flex-col md:flex-row justify-center items-center gap-6 reveal w-full">
                                 <button className="w-full md:w-auto relative group overflow-hidden bg-brand-yellow text-brand-deep px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.25em] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(251,191,36,0.3)]">
                                     <span className="relative z-10 flex items-center justify-center gap-4">
-                                        Agendar Demo
+                                        Eliminar Fugas de Dinero Ahora
                                     </span>
                                 </button>
                                 <button className="w-full md:w-auto bg-transparent border border-white/10 text-white px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.25em] transition-all duration-500 hover:bg-white hover:text-black">
-                                    Hablar con Ventas
+                                    Hablar Directo con un Experto
                                 </button>
                             </div>
                         </div>
@@ -662,7 +694,7 @@
                     <footer className="py-20 bg-[#020617] border-t border-white/5 px-6 relative overflow-hidden">
                         {/* Subtle glow */}
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-brand-yellow/30 to-transparent"></div>
-                        
+
                         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8 mb-16">
                             <div className="md:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
                                 <div className="flex items-center gap-3 mb-6">
@@ -680,7 +712,7 @@
                                     El software de punto de venta diseñado exclusivamente para automatizar, controlar y escalar la rentabilidad de las franquicias de autolavado más demandantes.
                                 </p>
                             </div>
-                            
+
                             <div className="flex flex-col items-center md:items-start">
                                 <h4 className="text-white font-bold text-xs uppercase tracking-[0.3em] mb-8">Navegación</h4>
                                 <div className="flex flex-col gap-4">
@@ -698,18 +730,18 @@
                                 </div>
                                 <div className="flex gap-4">
                                     <a href="#" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-brand-yellow hover:text-brand-deep hover:border-brand-yellow transition-colors duration-300">
-                                        <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                                        <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg>
                                     </a>
                                     <a href="#" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-brand-yellow hover:text-brand-deep hover:border-brand-yellow transition-colors duration-300">
                                         <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" /></svg>
                                     </a>
                                     <a href="#" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-brand-yellow hover:text-brand-deep hover:border-brand-yellow transition-colors duration-300">
-                                        <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                        <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
                             <p className="text-[10px] text-slate-600 font-medium uppercase tracking-[0.2em]">© 2026 Hyper Bee Wash Control. Todos los derechos reservados.</p>
                             <div className="flex gap-8">
@@ -726,4 +758,5 @@
         root.render(<App />);
     </script>
 </body>
+
 </html>
