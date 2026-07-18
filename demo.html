@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#020617">
+  <meta name="robots" content="noindex,nofollow">
   <title>Wash Control | Demo interactiva</title>
   <style>
     :root{
@@ -83,7 +84,7 @@
       transform:translateY(120px);opacity:0;transition:.35s;z-index:200}.toast.show{transform:translateY(0);opacity:1}
     @media(max-width:1050px){.kpis{grid-template-columns:repeat(2,1fr)}.two,.three{grid-template-columns:1fr}}
     @media(max-width:760px){
-      .shell{display:block}.shell aside{display:none}main{padding:20px 16px 92px}.topbar{align-items:flex-start}.actions .btn:not(.primary){display:none}
+      .shell{display:block}.shell aside{display:none}main{padding:20px 16px 92px}.topbar{align-items:flex-start}.actions .btn:not(.primary):not(.back-btn){display:none}
       .kpis{grid-template-columns:1fr 1fr;gap:11px}.card{padding:16px;border-radius:17px}.kpi-value{font-size:1.45rem}
       .chart{height:220px;gap:7px}.bar-label{font-size:9px}.mobile-nav{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:10px;right:10px;bottom:10px;
         background:rgba(7,16,31,.93);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:18px;padding:7px;z-index:100}
@@ -104,6 +105,7 @@
       <button class="nav-btn">♙ Empleados</button>
       <button class="nav-btn">◫ Reportes</button>
       <button class="nav-btn">⚙ Configuración</button>
+      <a href="./index.html" class="nav-btn" style="text-decoration:none; margin-top:16px; justify-content:center; border:1px solid rgba(255,255,255,0.1);" aria-label="Volver a la landing principal">← Volver al sitio</a>
     </nav>
     <div class="side-note"><strong style="color:#fff">Modo demostración</strong><br>Los datos mostrados son ilustrativos y no representan operaciones reales.</div>
   </aside>
@@ -116,6 +118,7 @@
         <p>Resumen operativo de tu autolavado · Hoy</p>
       </div>
       <div class="actions">
+        <a href="./index.html" class="btn back-btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;" aria-label="Volver a la landing principal">← Volver al sitio</a>
         <button class="btn">Descargar reporte</button>
         <button class="btn primary" onclick="openTicket()">＋ Nuevo ticket</button>
       </div>

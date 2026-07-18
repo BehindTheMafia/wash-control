@@ -862,6 +862,17 @@
                                 >
                                     <span className="z-10 relative">Solicitar una Demo</span>
                                 </a>
+                                <a
+                                    href="./demo.html"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-8 py-5 rounded-[24px] font-black text-lg uppercase tracking-widest flex items-center justify-center gap-4 group no-underline border border-white/10 hover:border-brand-yellow/30 bg-white/5 hover:bg-white/10 transition-all text-white hover:text-brand-yellow"
+                                    aria-label="Abrir demo interactiva de Wash Control"
+                                    data-cta="demo-interactiva"
+                                >
+                                    <Icon name="monitor" className="text-xl" />
+                                    <span className="z-10 relative">Probar demo interactiva</span>
+                                </a>
                             </div>
                         </div>
 
@@ -883,7 +894,7 @@
             );
         };
 
-        const ModuleCard = ({ icon, title, description, badge, image, onImageClick }) => (
+        const ModuleCard = ({ icon, title, description, badge, image, onImageClick, children }) => (
             <div className="glass-card rounded-[2rem] p-4 flex flex-col h-full reveal group overflow-hidden relative">
 
                 {/* Image / Screenshot Container */}
@@ -927,6 +938,7 @@
                         </div>
                     </div>
                     <p className="text-slate-400 leading-relaxed font-light text-base md:text-lg">{description}</p>
+                    {children}
                 </div>
             </div>
         );
@@ -1139,13 +1151,15 @@
                                     Solicitar demostración
                                 </a>
                                 <a
-                                    href="#modulos"
-                                    onClick={scrollToSection}
+                                    href="./demo.html"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="cta-btn-secondary"
-                                    aria-label="Conocer el sistema — ir a módulos"
+                                    aria-label="Abrir demo interactiva de Wash Control"
+                                    data-cta="demo-interactiva"
                                 >
-                                    <Icon name="visibility" className="text-lg" />
-                                    Conocer el sistema
+                                    <Icon name="monitor" className="text-lg" />
+                                    Probar demo interactiva
                                 </a>
                             </div>
 
@@ -1230,7 +1244,21 @@
                                     description="Consulta tus ventas, servicios realizados y actividad del equipo desde cualquier dispositivo, en cualquier momento."
                                     image="./images/panel de control.jpeg"
                                     onImageClick={setLightboxImg}
-                                />
+                                >
+                                    <div className="mt-8 pt-6 border-t border-white/10 flex flex-col items-start gap-4">
+                                        <p className="text-sm text-slate-300 font-light">Explora una versión demostrativa del sistema y registra un ticket de prueba desde cualquier dispositivo.</p>
+                                        <a
+                                            href="./demo.html"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-brand-yellow/30 text-white font-bold text-[11px] uppercase tracking-widest transition-all w-full lg:w-auto"
+                                            aria-label="Abrir demo interactiva de Wash Control"
+                                            data-cta="demo-interactiva"
+                                        >
+                                            <Icon name="monitor" className="text-lg" /> Probar demo interactiva
+                                        </a>
+                                    </div>
+                                </ModuleCard>
                                 <ModuleCard
                                     icon="payments"
                                     title="Nómina Automática"
