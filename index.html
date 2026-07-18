@@ -224,39 +224,14 @@
         }
 
         /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            height: 100vh;
-            height: 100dvh;
-            width: min(88vw, 380px);
-            background: #0f172a;
-            z-index: 110;
-            overflow-y: auto;
-            overscroll-behavior: contain;
-            -webkit-overflow-scrolling: touch;
-            padding-top: max(20px, env(safe-area-inset-top));
-            padding-bottom: max(20px, env(safe-area-inset-bottom));
-            transform: translateX(100%);
-            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-
         .mobile-menu-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            z-index: 105;
+            background: rgba(2, 6, 23, 0.9);
+            z-index: 200;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.35s ease;
+            transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .mobile-menu-overlay.open {
@@ -264,10 +239,48 @@
             pointer-events: auto;
         }
 
+        .mobile-menu {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: calc(100% - 32px);
+            max-width: 420px;
+            background: #0f172a;
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 40px 100px -10px rgba(0, 0, 0, 0.9);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+            padding: 24px;
+            z-index: 201;
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, calc(-50% + 20px)) scale(0.96);
+            transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            max-height: calc(100vh - max(32px, env(safe-area-inset-top) + env(safe-area-inset-bottom)));
+            max-height: calc(100dvh - max(32px, env(safe-area-inset-top) + env(safe-area-inset-bottom)));
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
         @media (prefers-reduced-motion: reduce) {
-            .mobile-menu,
             .mobile-menu-overlay {
                 transition: none !important;
+            }
+            .mobile-menu {
+                transition: none !important;
+                transform: translate(-50%, -50%) scale(1) !important;
+            }
+            .mobile-menu:not(.open) {
+                opacity: 0 !important;
             }
         }
 
@@ -724,9 +737,9 @@
             const closeButtonRef = useRef(null);
 
             const navItems = [
-                { name: 'Solución', id: 'modulos' },
-                { name: 'Por qué nosotros', id: 'features' },
-                { name: 'Planes', id: 'precios' }
+                { name: 'Solución', id: 'modulos', icon: 'dashboard' },
+                { name: 'Por qué nosotros', id: 'features', icon: 'verified' },
+                { name: 'Planes', id: 'precios', icon: 'payments' }
             ];
 
             useEffect(() => {
@@ -778,70 +791,72 @@
             };
 
             return (
-                <header className="fixed top-0 w-full z-[100] bg-[#020617]/70 backdrop-blur-2xl border-b border-white/5 py-4 px-6 md:px-8">
-                    <div className="max-w-7xl mx-auto flex justify-between items-center">
+                <>
+                    <header className="fixed top-0 w-full z-[100] bg-[#020617]/70 backdrop-blur-2xl border-b border-white/5 py-4 px-6 md:px-8">
+                        <div className="max-w-7xl mx-auto flex justify-between items-center">
 
-                        {/* 1. Brand Logo (Left) */}
-                        <div className="w-1/3 flex justify-start">
-                            <div className="flex items-center gap-4 cursor-pointer">
-                                <div className="bg-brand-yellow p-2.5 rounded-2xl shadow-2xl shadow-brand-yellow/10">
-                                    <Icon name="local_car_wash" className="text-brand-deep font-bold" />
-                                </div>
-                                <div className="hidden lg:flex flex-col">
-                                    <span className="text-lg font-black text-white italic tracking-tighter uppercase leading-none">
-                                        Hyper <span className="text-brand-yellow">Bee</span>
-                                    </span>
-                                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 mt-1 italic">Software de Control</span>
+                            {/* 1. Brand Logo (Left) */}
+                            <div className="w-1/3 flex justify-start">
+                                <div className="flex items-center gap-4 cursor-pointer">
+                                    <div className="bg-brand-yellow p-2.5 rounded-2xl shadow-2xl shadow-brand-yellow/10">
+                                        <Icon name="local_car_wash" className="text-brand-deep font-bold" />
+                                    </div>
+                                    <div className="hidden lg:flex flex-col">
+                                        <span className="text-lg font-black text-white italic tracking-tighter uppercase leading-none">
+                                            Hyper <span className="text-brand-yellow">Bee</span>
+                                        </span>
+                                        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 mt-1 italic">Software de Control</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {/* 2. Desktop Menu (Center) */}
-                        <nav className="w-1/3 hidden md:flex items-center justify-center gap-1 lg:gap-3" aria-label="Navegación principal">
-                            {navItems.map((item) => (
+                            {/* 2. Desktop Menu (Center) */}
+                            <nav className="w-1/3 hidden md:flex items-center justify-center gap-1 lg:gap-3" aria-label="Navegación principal">
+                                {navItems.map((item) => (
+                                    <a
+                                        key={item.id}
+                                        href={`#${item.id}`}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+                                        }}
+                                        className="nav-link px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400"
+                                    >
+                                        {item.name}
+                                    </a>
+                                ))}
+                            </nav>
+
+                            {/* 3. Action Button (Right) */}
+                            <div className="w-1/3 hidden md:flex justify-end">
                                 <a
-                                    key={item.id}
-                                    href={`#${item.id}`}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
-                                    }}
-                                    className="nav-link px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400"
+                                    href={WHATSAPP_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="nav-btn bg-brand-yellow text-brand-deep px-6 lg:px-8 py-2.5 font-black text-[10px] uppercase tracking-[0.2em] shadow-xl shadow-brand-yellow/5 active:scale-95 transition-all no-underline"
+                                    aria-label="Solicitar demo por WhatsApp"
                                 >
-                                    {item.name}
+                                    <Icon name="arrow_forward" className="btn-icon text-lg" />
+                                    <span>Solicitar Demo</span>
                                 </a>
-                            ))}
-                        </nav>
+                            </div>
 
-                        {/* 3. Action Button (Right) */}
-                        <div className="w-1/3 hidden md:flex justify-end">
-                            <a
-                                href={WHATSAPP_URL}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="nav-btn bg-brand-yellow text-brand-deep px-6 lg:px-8 py-2.5 font-black text-[10px] uppercase tracking-[0.2em] shadow-xl shadow-brand-yellow/5 active:scale-95 transition-all no-underline"
-                                aria-label="Solicitar demo por WhatsApp"
-                            >
-                                <Icon name="arrow_forward" className="btn-icon text-lg" />
-                                <span>Solicitar Demo</span>
-                            </a>
+                            {/* Mobile Toggle */}
+                            <div className="w-1/3 flex justify-end md:hidden">
+                                <button
+                                    ref={toggleButtonRef}
+                                    className="text-white flex items-center justify-center p-2 rounded-xl bg-white/5 border border-white/10"
+                                    onClick={() => setMenuOpen(true)}
+                                    aria-label="Abrir menú"
+                                    aria-expanded={menuOpen}
+                                    aria-controls="mobile-drawer"
+                                >
+                                    <Icon name="menu" className="text-2xl" />
+                                </button>
+                            </div>
+
                         </div>
-
-                        {/* Mobile Toggle */}
-                        <div className="w-1/3 flex justify-end md:hidden">
-                            <button
-                                ref={toggleButtonRef}
-                                className="text-white flex items-center justify-center p-2 rounded-xl bg-white/5 border border-white/10"
-                                onClick={() => setMenuOpen(true)}
-                                aria-label="Abrir menú"
-                                aria-expanded={menuOpen}
-                                aria-controls="mobile-drawer"
-                            >
-                                <Icon name="menu" className="text-2xl" />
-                            </button>
-                        </div>
-
-                    </div>
+                    </header>
 
                     {/* Mobile Menu Overlay */}
                     <div
@@ -855,64 +870,75 @@
                         id="mobile-drawer"
                         role="dialog"
                         aria-modal="true"
-                        aria-label="Menú móvil"
-                        className={`mobile-menu md:hidden flex flex-col p-6 px-4 sm:px-6 border-l border-white/10 ${menuOpen ? 'open' : ''}`}
+                        aria-label="Menú de navegación"
+                        className={`mobile-menu md:hidden ${menuOpen ? 'open' : ''}`}
                     >
                         {/* Drawer Header */}
-                        <div className="flex justify-between items-center mb-8 sticky top-0 z-10 py-2 bg-[#0f172a]">
+                        <div className="flex justify-between items-center mb-6">
                             <div className="flex items-center gap-3">
                                 <div className="bg-brand-yellow p-2 rounded-xl shadow-lg shadow-brand-yellow/10">
-                                    <Icon name="local_car_wash" className="text-brand-deep font-bold text-sm" />
+                                    <Icon name="local_car_wash" className="text-brand-deep font-bold text-xs" />
                                 </div>
-                                <span className="text-base font-black text-white italic tracking-tighter uppercase">
-                                    Wash <span className="text-brand-yellow">Control</span>
-                                </span>
+                                <div className="flex flex-col">
+                                    <span className="text-sm font-black text-white italic tracking-tighter uppercase leading-none">
+                                        Wash <span className="text-brand-yellow">Control</span>
+                                    </span>
+                                    <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 mt-1">Navegación</span>
+                                </div>
                             </div>
                             <button
                                 ref={closeButtonRef}
                                 onClick={handleClose}
-                                aria-label="Cerrar menú"
-                                className="text-white flex items-center justify-center min-w-[44px] min-h-[44px] rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                                aria-label="Cerrar menú y regresar al contenido"
+                                className="flex items-center justify-center gap-2 px-4 py-2 min-h-[44px] rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold text-xs uppercase tracking-widest transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-yellow"
                             >
-                                <Icon name="close" className="text-2xl" />
+                                <Icon name="arrow_back" className="text-lg" />
+                                Regresar
                             </button>
                         </div>
 
+                        {/* Intro text */}
+                        <p className="text-slate-300 text-sm font-light mb-8 leading-relaxed">
+                            Explora Wash Control y conoce cómo podemos modernizar la operación de tu autolavado.
+                        </p>
+
                         {/* Drawer Links */}
-                        <div className="flex flex-col gap-2 mb-8">
+                        <div className="flex flex-col gap-3 mb-8">
                             {navItems.map((item) => (
                                 <a
                                     key={item.id}
                                     href={`#${item.id}`}
                                     onClick={(e) => handleNavClick(e, item)}
-                                    className="text-white text-base font-semibold uppercase tracking-[0.1em] py-4 px-4 rounded-xl hover:bg-brand-yellow/10 focus-visible:bg-brand-yellow/10 active:bg-brand-yellow/20 transition-colors border border-transparent flex items-center min-h-[48px]"
+                                    className="flex items-center gap-4 text-white text-sm font-semibold uppercase tracking-widest p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 focus-visible:bg-white/10 active:scale-[0.98] transition-all min-h-[52px]"
                                 >
+                                    <Icon name={item.icon} className="text-xl text-slate-400" />
                                     {item.name}
                                 </a>
                             ))}
-                            <a
-                                href="./demo.html"
-                                className="text-white text-base font-semibold uppercase tracking-[0.1em] py-4 px-4 rounded-xl hover:bg-brand-yellow/10 focus-visible:bg-brand-yellow/10 active:bg-brand-yellow/20 transition-colors border border-transparent flex items-center min-h-[48px]"
-                            >
-                                Demo
-                            </a>
                         </div>
 
-                        {/* Drawer CTA */}
-                        <div className="mt-auto border-t border-white/10 pt-6 pb-4">
+                        {/* Drawer CTAs */}
+                        <div className="mt-auto flex flex-col gap-3">
                             <a
                                 href={WHATSAPP_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-3 bg-brand-yellow text-brand-deep w-full px-6 py-4 rounded-2xl font-black text-sm uppercase tracking-[0.15em] no-underline hover:scale-[1.02] active:scale-[0.98] transition-transform min-h-[48px]"
-                                aria-label="Solicitar demo por WhatsApp"
+                                className="flex items-center justify-center gap-3 bg-brand-yellow text-brand-deep w-full px-6 py-4 rounded-2xl font-black text-sm uppercase tracking-widest no-underline hover:scale-[1.02] active:scale-[0.98] transition-transform min-h-[52px] shadow-lg shadow-brand-yellow/20"
+                                aria-label="Solicitar demostración por WhatsApp"
                             >
                                 <Icon name="chat" className="text-xl" />
-                                Solicitar Demo
+                                Solicitar demostración
+                            </a>
+                            <a
+                                href="./demo.html"
+                                className="flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white w-full px-6 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest no-underline hover:bg-white/10 hover:border-white/20 active:scale-[0.98] transition-all min-h-[52px]"
+                            >
+                                <Icon name="monitor" className="text-xl text-slate-400" />
+                                Probar demo interactiva
                             </a>
                         </div>
                     </nav>
-                </header>
+                </>
             );
         };
 
