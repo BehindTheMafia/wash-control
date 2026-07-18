@@ -91,6 +91,7 @@
       .mobile-nav button{border:0;background:transparent;color:var(--muted);padding:8px 4px;border-radius:12px;font-size:11px}.mobile-nav button.active{color:var(--gold);background:rgba(251,191,36,.08)}
     }
     @media(max-width:420px){.kpis{grid-template-columns:1fr}.title p{font-size:13px}.quick-grid{grid-template-columns:1fr}}
+    .badge {display:inline-block; padding:3px 6px; background:rgba(251,191,36,.1); border:1px solid rgba(251,191,36,.25); color:var(--gold); border-radius:6px; font-size:9px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; margin-left:8px; vertical-align:middle;}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
 </head>
@@ -100,11 +101,11 @@
     <div class="brand"><div class="logo">WC</div><div><strong>Wash Control</strong><small>Hyperbee Solutions</small></div></div>
     <nav>
       <button class="nav-btn active">▦ Dashboard</button>
-      <button class="nav-btn" onclick="openTicket()">＋ Nuevo ticket</button>
-      <button class="nav-btn">▤ Caja</button>
-      <button class="nav-btn">♙ Empleados</button>
-      <button class="nav-btn">◫ Reportes</button>
-      <button class="nav-btn">⚙ Configuración</button>
+      <button class="nav-btn" onclick="openTicket()">＋ Nuevo ticket <span class="badge" style="color:#38bdf8;background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.25)">Pruébalo ahora</span></button>
+      <button class="nav-btn" onclick="showFeature('caja')">▤ Caja <span class="badge">Versión completa</span></button>
+      <button class="nav-btn" onclick="showFeature('empleados')">♙ Empleados <span class="badge">Versión completa</span></button>
+      <button class="nav-btn" onclick="showFeature('reportes')">◫ Reportes <span class="badge">Versión completa</span></button>
+      <button class="nav-btn" onclick="showFeature('configuracion')">⚙ Configuración <span class="badge">Versión completa</span></button>
       <a href="./index.html" class="nav-btn" style="text-decoration:none; margin-top:16px; justify-content:center; border:1px solid rgba(255,255,255,0.1);" aria-label="Volver a la landing principal">← Volver al sitio</a>
     </nav>
     <div class="side-note"><strong style="color:#fff">Modo demostración</strong><br>Los datos mostrados son ilustrativos y no representan operaciones reales.</div>
@@ -119,7 +120,7 @@
       </div>
       <div class="actions">
         <a href="./index.html" class="btn back-btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;" aria-label="Volver a la landing principal">← Volver al sitio</a>
-        <button class="btn">Descargar reporte</button>
+        <button class="btn" onclick="showFeature('descargar')">Descargar reporte</button>
         <button class="btn primary" onclick="openTicket()">＋ Nuevo ticket</button>
       </div>
     </div>
@@ -177,10 +178,10 @@
       <article class="card">
         <div class="section-head"><h2>Acciones rápidas</h2><span>Operación</span></div>
         <div class="quick-grid">
-          <button class="quick" onclick="openTicket()"><b>＋ Nuevo ticket</b><small>Registrar vehículo y servicio</small></button>
-          <button class="quick" onclick="demoToast('Resumen de cierre preparado')"><b>▤ Cierre de caja</b><small>Revisar ventas y finalizar el turno.</small></button>
-          <button class="quick" onclick="demoToast('Reporte semanal listo')"><b>◫ Ver reporte</b><small>Ingresos y servicios</small></button>
-          <button class="quick" onclick="demoToast('Módulo de empleados abierto')"><b>♙ Empleados</b><small>Comisiones y desempeño</small></button>
+          <button class="quick" onclick="openTicket()"><b>＋ Nuevo ticket <span class="badge" style="color:#38bdf8;background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.25);float:right;margin-top:2px;">Activo</span></b><small>Registrar vehículo y servicio</small></button>
+          <button class="quick" onclick="showFeature('cierre')"><b>▤ Cierre de caja <span class="badge" style="float:right;margin-top:2px;">Completa</span></b><small>Revisar ventas y finalizar el turno.</small></button>
+          <button class="quick" onclick="showFeature('reportes')"><b>◫ Ver reporte <span class="badge" style="float:right;margin-top:2px;">Completa</span></b><small>Ingresos y servicios</small></button>
+          <button class="quick" onclick="showFeature('empleados')"><b>♙ Empleados <span class="badge" style="float:right;margin-top:2px;">Completa</span></b><small>Comisiones y desempeño</small></button>
         </div>
       </article>
     </section>
@@ -195,8 +196,8 @@
 <nav class="mobile-nav">
   <button class="active">▦<br>Inicio</button>
   <button onclick="openTicket()">＋<br>Ticket</button>
-  <button onclick="demoToast('Caja abierta')">▤<br>Caja</button>
-  <button onclick="demoToast('Reportes abiertos')">◫<br>Reportes</button>
+  <button onclick="showFeature('caja')">▤<br>Caja</button>
+  <button onclick="showFeature('reportes')">◫<br>Reportes</button>
 </nav>
 
 <dialog id="ticketDialog">
@@ -208,6 +209,23 @@
     <div class="summary"><span>Total</span><strong id="ticketTotal">C$ 180</strong></div>
     <button class="btn primary" type="submit">Registrar ticket</button>
   </form>
+</dialog>
+
+<dialog id="featureDialog" aria-modal="true" aria-labelledby="featureTitle" aria-describedby="featureDesc" style="max-width:440px;">
+  <div class="modal-head">
+    <h3 id="featureTitle">Disponible en la implementación completa</h3>
+    <button class="close" onclick="featureDialog.close()" aria-label="Cerrar modal">×</button>
+  </div>
+  <div class="modal-body form" style="text-align:center; padding:30px 20px;">
+    <div style="width:48px; height:48px; border-radius:14px; background:rgba(251,191,36,.1); color:var(--gold); border:1px solid rgba(251,191,36,.2); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:24px;">★</div>
+    <p id="featureDesc" style="color:var(--muted); margin-bottom:28px; line-height:1.6; font-size:14px;">
+      Esta demostración se concentra en el registro de tickets. En la plataforma implementada también podrás gestionar esta función con la configuración de tu autolavado, tus usuarios y tus datos reales.
+    </p>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <a href="https://wa.me/50557042498?text=Hola%2C%20vi%20la%20plataforma%20de%20gesti%C3%B3n%20para%20autolavados%20de%20Hyperbee%20Solutions%20y%20me%20gustar%C3%ADa%20solicitar%20una%20demostraci%C3%B3n." target="_blank" rel="noopener noreferrer" class="btn primary" style="text-decoration:none; padding:14px; display:flex; justify-content:center; align-items:center; gap:8px;" aria-label="Solicitar demostración personalizada en WhatsApp">Solicitar demostración personalizada</a>
+      <button class="btn" style="background:transparent; border:1px solid var(--line); padding:14px;" onclick="featureDialog.close()">Continuar explorando</button>
+    </div>
+  </div>
 </dialog>
 
 <div class="toast" id="toast">Acción completada</div>
@@ -235,13 +253,30 @@
     document.getElementById('vehicles').textContent='35';
     document.getElementById('average').textContent='C$ '+Math.round((8450+price)/35).toLocaleString('es-NI');
     ticketDialog.close();
-    demoToast('Ticket registrado correctamente');
+    demoToast('Ticket registrado en la demostración');
   }
   let toastTimer;
   function demoToast(message){
     const toast=document.getElementById('toast');
     toast.textContent=message;toast.classList.add('show');
     clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2600);
+  }
+
+  const featureData = {
+    cierre: { title: "Cierre de caja en la versión completa", desc: "Revisa las ventas del turno, compara el efectivo esperado y finaliza la jornada con un resumen organizado." },
+    reportes: { title: "Reportes adaptados a tu operación", desc: "Consulta ingresos, servicios más solicitados, actividad del equipo y resultados por período con los datos reales de tu autolavado." },
+    empleados: { title: "Gestión del equipo y comisiones", desc: "Asigna empleados a cada servicio y consulta el cálculo de sus comisiones según la configuración acordada para tu negocio." },
+    configuracion: { title: "Sistema personalizado para tu autolavado", desc: "Configura servicios, tarifas, tipos de vehículos, usuarios, permisos y reglas de operación según la forma de trabajo de tu negocio." },
+    descargar: { title: "Exportación de reportes", desc: "En la implementación completa podrás generar reportes con la información real de la operación y los períodos que necesites consultar." },
+    caja: { title: "Resumen de caja", desc: "Consulta las ventas registradas durante el turno y revisa el estado de la caja antes de realizar el cierre." },
+    default: { title: "Disponible en la implementación completa", desc: "Esta demostración se concentra en el registro de tickets. En la plataforma implementada también podrás gestionar esta función con la configuración de tu autolavado, tus usuarios y tus datos reales." }
+  };
+  const featureDialog = document.getElementById('featureDialog');
+  function showFeature(id) {
+    const data = featureData[id] || featureData.default;
+    document.getElementById('featureTitle').textContent = data.title;
+    document.getElementById('featureDesc').textContent = data.desc;
+    featureDialog.showModal();
   }
 </script>
 </body>
