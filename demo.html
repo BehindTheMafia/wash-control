@@ -93,6 +93,73 @@
     @media(max-width:420px){.kpis{grid-template-columns:1fr}.title p{font-size:13px}.quick-grid{grid-template-columns:1fr}}
     .badge {display:inline-block; padding:3px 6px; background:rgba(251,191,36,.1); border:1px solid rgba(251,191,36,.25); color:var(--gold); border-radius:6px; font-size:9px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; margin-left:8px; vertical-align:middle;}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    
+    /* Estilos para el ticket térmico */
+    .receipt-modal {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,.85); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center; padding: 16px;
+      opacity: 0; transition: opacity .3s;
+    }
+    .receipt-modal.show { display: flex; opacity: 1; }
+    .receipt-container {
+      background: #fdfdfc; color: #111; width: 100%; max-width: 380px;
+      border-radius: 8px; padding: 24px; box-shadow: 0 30px 60px rgba(0,0,0,.6);
+      transform: translateY(20px) scale(0.98); transition: all .35s cubic-bezier(.2,.8,.2,1);
+      max-height: 90vh; overflow-y: auto; font-family: 'Courier New', Courier, monospace;
+    }
+    .receipt-modal.show .receipt-container { transform: translateY(0) scale(1); }
+    .receipt-header { text-align: center; margin-bottom: 16px; }
+    .receipt-logo {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px; border-radius: 8px;
+      background: #111; color: #fff; font-weight: bold; font-family: sans-serif;
+      margin-bottom: 8px;
+    }
+    .receipt-header h2 { margin: 0; font-size: 16px; text-transform: uppercase; }
+    .receipt-header p { margin: 2px 0; font-size: 12px; color: #444; }
+    .receipt-title {
+      text-align: center; font-weight: bold; font-size: 14px;
+      margin: 16px 0 8px; border-bottom: 1px dashed #ccc; padding-bottom: 8px;
+    }
+    .receipt-demo-badge {
+      display: inline-block; background: #f3f4f6; color: #4b5563;
+      font-size: 10px; padding: 2px 6px; border-radius: 4px; font-family: sans-serif; margin-bottom: 8px;
+    }
+    .receipt-section { margin-bottom: 12px; font-size: 12px; }
+    .receipt-row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .receipt-table { width: 100%; font-size: 12px; border-collapse: collapse; margin-bottom: 12px; }
+    .receipt-table th { text-align: left; border-bottom: 1px dashed #ccc; padding-bottom: 4px; font-weight: normal; }
+    .receipt-table td { padding: 4px 0; vertical-align: top; }
+    .receipt-totals { border-top: 1px dashed #ccc; padding-top: 8px; font-size: 12px; }
+    .receipt-totals .receipt-row.bold { font-weight: bold; font-size: 14px; margin-top: 4px; }
+    .receipt-footer {
+      text-align: center; font-size: 11px; color: #555;
+      margin-top: 20px; border-top: 1px dashed #ccc; padding-top: 16px;
+    }
+    .receipt-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 24px; font-family: sans-serif; }
+    .receipt-actions button {
+      width: 100%; padding: 12px; border-radius: 8px;
+      border: 1px solid #ccc; background: transparent; font-size: 14px; cursor: pointer;
+    }
+    .receipt-actions button.primary { background: var(--gold); border-color: var(--gold); color: #111; font-weight: bold; }
+    
+    @media print {
+      body * { visibility: hidden; }
+      .receipt-modal { position: absolute; left: 0; top: 0; background: transparent; display: block; opacity: 1; padding: 0; }
+      .receipt-container, .receipt-container * { visibility: visible; }
+      .receipt-container {
+        position: absolute; left: 0; top: 0; width: 100%; max-width: 80mm;
+        padding: 0; margin: 0; box-shadow: none; border-radius: 0;
+        transform: none; max-height: none; overflow: visible;
+      }
+      .receipt-actions { display: none !important; }
+      .receipt-demo-badge { border: 1px solid #000; }
+    }
+    @media(prefers-reduced-motion:reduce){
+      .receipt-modal { transition: none; }
+      .receipt-container { transition: none; transform: none; }
+    }
   </style>
 </head>
 <body>
@@ -228,6 +295,98 @@
   </div>
 </dialog>
 
+<!-- COMPROBANTE TÉRMICO PREVIEW -->
+<div class="receipt-modal" id="receiptModal" role="dialog" aria-modal="true" aria-labelledby="receiptTitle">
+  <div class="receipt-container">
+    <div class="receipt-header">
+      <!-- Reemplazar este logo y nombre por la identidad del autolavado durante la implementación. -->
+      <div class="receipt-logo">WC</div>
+      <h2>TU AUTOLAVADO</h2>
+      <p style="font-size:10px; color:#666;">Identidad visual personalizable</p>
+      <!-- Reemplazar dirección fiscal -->
+      <p>Managua, Nicaragua</p>
+      <!-- Reemplazar teléfono -->
+      <p>Tel.: +505 0000-0000</p>
+      <!-- Reemplazar RUC, Confirmar régimen tributario, Confirmar numeración autorizada -->
+      <p>RUC: Configurable en implementación</p>
+    </div>
+    
+    <div class="receipt-title">
+      <div class="receipt-demo-badge">Vista demostrativa</div><br>
+      <span id="receiptTitle">COMPROBANTE DE SERVICIO</span>
+    </div>
+    
+    <div class="receipt-section">
+      <div class="receipt-row"><span>No.</span><span id="rcptNo">DEMO-000035</span></div>
+      <div class="receipt-row"><span>Fecha:</span><span id="rcptDate">17/07/2026</span></div>
+      <div class="receipt-row"><span>Hora:</span><span id="rcptTime">10:35 a. m.</span></div>
+    </div>
+    
+    <div class="receipt-section" style="border-top:1px dashed #ccc; padding-top:8px;">
+      <div class="receipt-row"><span>Cliente:</span><span>Consumidor final</span></div>
+      <div class="receipt-row"><span>RUC/Cédula:</span><span>No requerido en demo</span></div>
+    </div>
+    
+    <div class="receipt-section" style="border-top:1px dashed #ccc; padding-top:8px;">
+      <div class="receipt-row"><span>Vehículo:</span><span id="rcptVehicle">SUV</span></div>
+      <div class="receipt-row"><span>Pago:</span><span>Efectivo</span></div>
+      <div class="receipt-row"><span>Estado:</span><span>Pagado</span></div>
+    </div>
+    
+    <table class="receipt-table">
+      <thead>
+        <tr><th>Cant.</th><th>Descripción</th><th style="text-align:right">Importe</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><span id="rcptService">Lavado completo</span><br><small style="color:#555">C$ <span id="rcptPriceUnit">300.00</span></small></td>
+          <td style="text-align:right">C$ <span id="rcptPriceTotal">300.00</span></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="receipt-totals">
+      <div class="receipt-row"><span>Subtotal:</span><span>C$ <span id="rcptSubtotal">300.00</span></span></div>
+      <div style="font-size:10px; color:#666; text-align:right; margin:4px 0;">Tratamiento de IVA pendiente de configuración fiscal.</div>
+      <div class="receipt-row bold"><span>TOTAL:</span><span>C$ <span id="rcptTotal">300.00</span></span></div>
+    </div>
+    
+    <div class="receipt-footer">
+      <p style="margin:0 0 4px; font-weight:bold;">¡Gracias por preferirnos!</p>
+      <p style="margin:0 0 8px;">Conserva este comprobante para cualquier consulta.</p>
+      <p style="margin:0; font-size:9px; color:#888;">Vista demostrativa. Configuración fiscal pendiente de validación.</p>
+      <p style="margin:4px 0 0; font-size:9px; color:#888;">Tecnología desarrollada por Hyperbee Solutions.</p>
+    </div>
+    
+    <div class="receipt-actions">
+      <button class="primary" onclick="showPrintModal()">Imprimir comprobante</button>
+      <button onclick="document.getElementById('receiptModal').classList.remove('show'); openTicket();">Registrar otro ticket</button>
+      <button style="border:none; color:#555; text-decoration:underline;" onclick="document.getElementById('receiptModal').classList.remove('show');">Volver al dashboard</button>
+    </div>
+  </div>
+</div>
+
+<dialog id="printModal" aria-modal="true" aria-labelledby="printTitle" aria-describedby="printDesc" style="max-width:440px;">
+  <div class="modal-head">
+    <h3 id="printTitle">Impresión configurada para tu negocio</h3>
+    <button class="close" onclick="closePrintModal()" aria-label="Cerrar modal">×</button>
+  </div>
+  <div class="modal-body form" style="text-align:center; padding:30px 20px;">
+    <div style="width:48px; height:48px; border-radius:14px; background:rgba(251,191,36,.1); color:var(--gold); border:1px solid rgba(251,191,36,.2); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:24px;">🖨</div>
+    <p id="printDesc" style="color:var(--text); margin-bottom:12px; line-height:1.6; font-size:14px;">
+      En la implementación completa configuramos el comprobante con el nombre, logo, datos fiscales y formato de tu autolavado, listo para utilizarse con la impresora y el flujo de caja acordados.
+    </p>
+    <p style="color:var(--muted); margin-bottom:28px; line-height:1.6; font-size:12px;">
+      También validamos contigo la numeración, el tratamiento fiscal y la información que debe mostrarse al consumidor.
+    </p>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <a href="https://wa.me/50557042498?text=Hola%2C%20vi%20la%20demostraci%C3%B3n%20de%20Wash%20Control%20y%20me%20interesa%20configurar%20la%20impresi%C3%B3n%20de%20comprobantes%20para%20mi%20autolavado." target="_blank" rel="noopener noreferrer" class="btn primary" style="text-decoration:none; padding:14px; display:flex; justify-content:center; align-items:center; gap:8px;" aria-label="Solicitar implementación en WhatsApp">Solicitar implementación</a>
+      <button class="btn" style="background:transparent; border:1px solid var(--line); padding:14px;" onclick="closePrintModal()">Continuar explorando</button>
+    </div>
+  </div>
+</dialog>
+
 <div class="toast" id="toast">Acción completada</div>
 
 <script>
@@ -253,13 +412,60 @@
     document.getElementById('vehicles').textContent='35';
     document.getElementById('average').textContent='C$ '+Math.round((8450+price)/35).toLocaleString('es-NI');
     ticketDialog.close();
-    demoToast('Ticket registrado en la demostración');
+    showReceipt(type, service, price, employee);
   }
   let toastTimer;
   function demoToast(message){
     const toast=document.getElementById('toast');
     toast.textContent=message;toast.classList.add('show');
     clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2600);
+  }
+
+  // Configuración central para datos fiscales durante la implementación
+  const BUSINESS_CONFIG = {
+    commercialName: "TU AUTOLAVADO",
+    legalName: "",
+    ruc: "",
+    address: "Managua, Nicaragua",
+    phone: "",
+    logo: "", // Reemplazar con ruta real del logo
+    fiscalRegime: "pending-validation",
+    invoiceSeries: "DEMO",
+    currency: "NIO",
+    ivaMode: "pending-validation"
+  };
+  
+  let demoTicketCounter = 35;
+
+  function showReceipt(type, serviceName, price, employee) {
+    demoTicketCounter++;
+    const now = new Date();
+    
+    document.getElementById('rcptNo').textContent = `DEMO-${String(demoTicketCounter).padStart(6, '0')}`;
+    document.getElementById('rcptDate').textContent = now.toLocaleDateString('es-NI');
+    document.getElementById('rcptTime').textContent = now.toLocaleTimeString('es-NI', {hour: '2-digit', minute:'2-digit'});
+    
+    document.getElementById('rcptVehicle').textContent = type;
+    // Empleado conservado internamente, pero excluido del comprobante visible
+    document.getElementById('rcptService').textContent = serviceName;
+    
+    const formattedPrice = price.toFixed(2);
+    document.getElementById('rcptPriceUnit').textContent = formattedPrice;
+    document.getElementById('rcptPriceTotal').textContent = formattedPrice;
+    document.getElementById('rcptSubtotal').textContent = formattedPrice;
+    document.getElementById('rcptTotal').textContent = formattedPrice;
+    
+    document.getElementById('receiptModal').classList.add('show');
+  }
+
+  const printModal = document.getElementById('printModal');
+  function showPrintModal() {
+    document.getElementById('receiptModal').classList.remove('show');
+    printModal.showModal();
+  }
+  function closePrintModal() {
+    printModal.close();
+    document.getElementById('receiptModal').classList.add('show');
   }
 
   const featureData = {
