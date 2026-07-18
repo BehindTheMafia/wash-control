@@ -256,6 +256,421 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #fbbf24;
         }
+
+        /* ═══════════════════════════════════════════ */
+        /* CTA FINAL — PREMIUM CINEMATIC SECTION      */
+        /* ═══════════════════════════════════════════ */
+
+        .cta-final {
+            position: relative;
+            overflow: hidden;
+            min-height: 760px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Vehicle image layer — separate for transform animation */
+        .cta-final__vehicle-layer {
+            position: absolute;
+            inset: 0;
+            background-image: url('images/Fondo carro.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 60% center;
+            pointer-events: none;
+            will-change: transform;
+            transform-origin: 60% 50%;
+        }
+
+        /* Dark lateral gradient — left side for text readability */
+        .cta-final__overlay-lateral {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(2, 6, 23, 0.92) 0%,
+                rgba(2, 6, 23, 0.80) 28%,
+                rgba(2, 6, 23, 0.45) 52%,
+                rgba(2, 6, 23, 0.10) 72%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Bottom gradient — blends into footer */
+        .cta-final__overlay-bottom {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 200px;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(2, 6, 23, 0.4) 30%,
+                rgba(2, 6, 23, 0.85) 70%,
+                #020617 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Top vignette */
+        .cta-final__overlay-top {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 160px;
+            background: linear-gradient(
+                to bottom,
+                rgba(2, 6, 23, 0.7) 0%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Subtle blue glow behind vehicle */
+        .cta-final__glow {
+            position: absolute;
+            top: 30%;
+            right: 20%;
+            width: 500px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+            filter: blur(60px);
+        }
+
+        /* Inner vignette */
+        .cta-final__vignette {
+            position: absolute;
+            inset: 0;
+            box-shadow: inset 0 0 200px 40px rgba(2, 6, 23, 0.4);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Content wrapper */
+        .cta-final__content {
+            position: relative;
+            z-index: 10;
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 clamp(20px, 5vw, 64px);
+            display: flex;
+            align-items: center;
+        }
+
+        .cta-final__text-block {
+            max-width: 580px;
+        }
+
+        /* Tag / Label */
+        .cta-final__tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.18);
+            margin-bottom: 24px;
+        }
+
+        .cta-final__tag span {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: #fbbf24;
+        }
+
+        /* Title */
+        .cta-final__title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 4.5vw, 3.75rem);
+            line-height: 1.05;
+            color: #ffffff;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .cta-final__title-highlight {
+            color: #fbbf24;
+        }
+
+        /* Description */
+        .cta-final__desc {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(0.95rem, 1.5vw, 1.18rem);
+            line-height: 1.7;
+            color: #94a3b8;
+            font-weight: 300;
+            margin-bottom: 36px;
+            max-width: 480px;
+        }
+
+        /* Buttons container */
+        .cta-final__buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        /* Primary CTA button */
+        .cta-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #020617;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 4px 24px -6px rgba(251, 191, 36, 0.25);
+            min-height: 52px;
+        }
+
+        .cta-btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 40px -8px rgba(251, 191, 36, 0.4);
+        }
+
+        .cta-btn-primary:active {
+            transform: translateY(0) scale(0.98);
+            box-shadow: 0 2px 12px -4px rgba(251, 191, 36, 0.3);
+        }
+
+        .cta-btn-primary:focus-visible {
+            outline: 2px solid #fbbf24;
+            outline-offset: 3px;
+        }
+
+        /* Secondary CTA button */
+        .cta-btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #e2e8f0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            min-height: 52px;
+        }
+
+        .cta-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(251, 191, 36, 0.25);
+            color: #fbbf24;
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-secondary:active {
+            transform: translateY(0);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .cta-btn-secondary:focus-visible {
+            outline: 2px solid rgba(251, 191, 36, 0.6);
+            outline-offset: 3px;
+        }
+
+        /* ── Animation States ── */
+        .cta-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(4px);
+            transition:
+                opacity 0.85s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.85s cubic-bezier(0.23, 1, 0.32, 1),
+                filter 0.85s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .cta-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Vehicle entrance */
+        .cta-final__vehicle-layer {
+            opacity: 0;
+            transform: scale(1.05);
+            transition:
+                opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 1.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .cta-final__vehicle-layer.is-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Light sweep — one-time overlay effect */
+        .cta-final__light-sweep {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                105deg,
+                transparent 40%,
+                rgba(255, 255, 255, 0.03) 45%,
+                rgba(255, 255, 255, 0.06) 50%,
+                rgba(255, 255, 255, 0.03) 55%,
+                transparent 60%
+            );
+            transform: translateX(-120%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .cta-final__light-sweep.is-visible {
+            animation: ctaLightSweep 1.8s 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes ctaLightSweep {
+            to { transform: translateX(120%); }
+        }
+
+        /* ── Responsive — Breakpoints ── */
+
+        /* 1440px+ */
+        @media (min-width: 1441px) {
+            .cta-final { min-height: 820px; }
+            .cta-final__vehicle-layer { background-position: 55% center; }
+        }
+
+        /* 1280px */
+        @media (max-width: 1280px) {
+            .cta-final { min-height: 720px; }
+            .cta-final__vehicle-layer { background-position: 62% center; }
+        }
+
+        /* 1024px — Tablet landscape */
+        @media (max-width: 1024px) {
+            .cta-final { min-height: 680px; }
+            .cta-final__vehicle-layer { background-position: 65% center; }
+            .cta-final__overlay-lateral {
+                background: linear-gradient(
+                    90deg,
+                    rgba(2, 6, 23, 0.93) 0%,
+                    rgba(2, 6, 23, 0.82) 32%,
+                    rgba(2, 6, 23, 0.50) 58%,
+                    rgba(2, 6, 23, 0.15) 80%,
+                    transparent 100%
+                );
+            }
+            .cta-final__text-block { max-width: 480px; }
+        }
+
+        /* 768px — Tablet portrait */
+        @media (max-width: 768px) {
+            .cta-final { min-height: 640px; align-items: flex-end; padding-bottom: 80px; }
+            .cta-final__vehicle-layer { background-position: 68% 35%; }
+            .cta-final__overlay-lateral {
+                background: linear-gradient(
+                    180deg,
+                    rgba(2, 6, 23, 0.3) 0%,
+                    rgba(2, 6, 23, 0.65) 40%,
+                    rgba(2, 6, 23, 0.92) 70%,
+                    rgba(2, 6, 23, 0.98) 100%
+                );
+            }
+            .cta-final__text-block { max-width: 100%; }
+            .cta-final__buttons { flex-direction: column; width: 100%; }
+            .cta-btn-primary,
+            .cta-btn-secondary { width: 100%; justify-content: center; }
+            .cta-final__glow { right: 10%; top: 10%; width: 350px; height: 280px; }
+        }
+
+        /* 430px — Large phone */
+        @media (max-width: 430px) {
+            .cta-final { min-height: 600px; padding-bottom: 60px; }
+            .cta-final__vehicle-layer { background-position: 65% 30%; }
+            .cta-final__tag { margin-bottom: 18px; }
+            .cta-final__tag span { font-size: 9px; letter-spacing: 0.2em; }
+            .cta-final__title { margin-bottom: 16px; }
+            .cta-final__desc { margin-bottom: 28px; }
+            .cta-final__overlay-lateral {
+                background: linear-gradient(
+                    180deg,
+                    rgba(2, 6, 23, 0.25) 0%,
+                    rgba(2, 6, 23, 0.70) 35%,
+                    rgba(2, 6, 23, 0.95) 65%,
+                    #020617 100%
+                );
+            }
+        }
+
+        /* 390px */
+        @media (max-width: 390px) {
+            .cta-final { min-height: 580px; }
+            .cta-final__vehicle-layer { background-position: 62% 28%; }
+            .cta-btn-primary,
+            .cta-btn-secondary { padding: 14px 24px; font-size: 11px; }
+        }
+
+        /* 360px — Small phone */
+        @media (max-width: 360px) {
+            .cta-final { min-height: 560px; }
+            .cta-final__vehicle-layer { background-position: 60% 28%; }
+        }
+
+        /* ── Reduced Motion ── */
+        @media (prefers-reduced-motion: reduce) {
+            .cta-animate {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+                transition: none !important;
+            }
+            .cta-final__vehicle-layer {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+            .cta-final__light-sweep {
+                display: none !important;
+            }
+            .cta-btn-primary,
+            .cta-btn-secondary {
+                transition: background 0.2s, color 0.2s, border-color 0.2s !important;
+            }
+            .cta-btn-primary:hover,
+            .cta-btn-secondary:hover {
+                transform: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -265,7 +680,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        const WHATSAPP_URL = "https://wa.me/50557037623?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20el%20sistema%20Hyper%20Bee%20Wash%20Control";
+        const WHATSAPP_URL = "https://wa.me/50557042498?text=Hola%2C%20vi%20la%20plataforma%20de%20gesti%C3%B3n%20para%20autolavados%20de%20Hyperbee%20Solutions%20y%20me%20gustar%C3%ADa%20solicitar%20una%20demostraci%C3%B3n.";
 
         const Icon = ({ name, className = "" }) => (
             <span className={`material-symbols-outlined ${className}`}>{name}</span>
@@ -564,6 +979,182 @@
             </div>
         );
 
+        const CtaFinal = () => {
+            const sectionRef = useRef(null);
+            const vehicleRef = useRef(null);
+            const sweepRef = useRef(null);
+            const animatedRef = useRef(false);
+
+            useEffect(() => {
+                const section = sectionRef.current;
+                const vehicle = vehicleRef.current;
+                const sweep = sweepRef.current;
+                if (!section || !vehicle) return;
+
+                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                if (prefersReduced) {
+                    // Show everything immediately
+                    vehicle.classList.add('is-visible');
+                    section.querySelectorAll('.cta-animate').forEach(el => el.classList.add('is-visible'));
+                    return;
+                }
+
+                // IntersectionObserver for entry animations
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !animatedRef.current) {
+                            animatedRef.current = true;
+
+                            // Vehicle entrance
+                            vehicle.classList.add('is-visible');
+
+                            // Light sweep
+                            if (sweep) sweep.classList.add('is-visible');
+
+                            // Staggered text animations
+                            const animElements = section.querySelectorAll('.cta-animate');
+                            animElements.forEach((el, i) => {
+                                setTimeout(() => {
+                                    el.classList.add('is-visible');
+                                }, 200 + (i * 110));
+                            });
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                observer.observe(section);
+
+                // Cursor parallax — desktop only, pointer:fine
+                const hasPointer = window.matchMedia('(pointer: fine)').matches;
+                let rafId = null;
+                let targetX = 0;
+                let targetY = 0;
+                let currentX = 0;
+                let currentY = 0;
+
+                const handleMouseMove = (e) => {
+                    if (!hasPointer) return;
+                    const rect = section.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    targetX = ((e.clientX - centerX) / rect.width) * 8;
+                    targetY = ((e.clientY - centerY) / rect.height) * 5;
+                };
+
+                const animateParallax = () => {
+                    currentX += (targetX - currentX) * 0.06;
+                    currentY += (targetY - currentY) * 0.06;
+                    if (vehicle && animatedRef.current) {
+                        vehicle.style.transform = `scale(1) translate(${currentX}px, ${currentY}px)`;
+                    }
+                    rafId = requestAnimationFrame(animateParallax);
+                };
+
+                if (hasPointer) {
+                    section.addEventListener('mousemove', handleMouseMove);
+                    rafId = requestAnimationFrame(animateParallax);
+                }
+
+                // GSAP scroll-based subtle Y movement on vehicle
+                gsap.registerPlugin(ScrollTrigger);
+                const scrollCtx = gsap.context(() => {
+                    gsap.to(vehicle, {
+                        y: -18,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: section,
+                            start: 'top bottom',
+                            end: 'bottom top',
+                            scrub: 1.2,
+                        }
+                    });
+                });
+
+                return () => {
+                    observer.disconnect();
+                    if (hasPointer) {
+                        section.removeEventListener('mousemove', handleMouseMove);
+                        if (rafId) cancelAnimationFrame(rafId);
+                    }
+                    scrollCtx.revert();
+                };
+            }, []);
+
+            const scrollToSection = (e) => {
+                e.preventDefault();
+                document.getElementById('modulos')?.scrollIntoView({ behavior: 'smooth' });
+            };
+
+            return (
+                <section
+                    ref={sectionRef}
+                    id="cta-final"
+                    className="cta-final"
+                    aria-label="Llamada a la acción — Digitaliza hoy tu autolavado"
+                >
+                    {/* Layer 1: Vehicle image */}
+                    <div ref={vehicleRef} className="cta-final__vehicle-layer" aria-hidden="true"></div>
+
+                    {/* Layer 2: Overlays */}
+                    <div className="cta-final__overlay-lateral" aria-hidden="true"></div>
+                    <div className="cta-final__overlay-bottom" aria-hidden="true"></div>
+                    <div className="cta-final__overlay-top" aria-hidden="true"></div>
+                    <div className="cta-final__glow" aria-hidden="true"></div>
+                    <div className="cta-final__vignette" aria-hidden="true"></div>
+
+                    {/* Layer 3: Light sweep effect */}
+                    <div ref={sweepRef} className="cta-final__light-sweep" aria-hidden="true"></div>
+
+                    {/* Layer 4: Content */}
+                    <div className="cta-final__content">
+                        <div className="cta-final__text-block">
+
+                            {/* Tag */}
+                            <div className="cta-final__tag cta-animate">
+                                <Icon name="rocket_launch" className="text-brand-yellow text-sm" />
+                                <span>El siguiente paso para tu negocio</span>
+                            </div>
+
+                            {/* Title */}
+                            <h2 className="cta-final__title cta-animate">
+                                Digitaliza hoy<br />tu <span className="cta-final__title-highlight">autolavado</span>
+                            </h2>
+
+                            {/* Description */}
+                            <p className="cta-final__desc cta-animate">
+                                Organiza los servicios, agiliza la atención y consulta los resultados de tu negocio desde un solo sistema.
+                            </p>
+
+                            {/* Buttons */}
+                            <div className="cta-final__buttons cta-animate">
+                                <a
+                                    href={WHATSAPP_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="cta-btn-primary"
+                                    aria-label="Solicitar demostración por WhatsApp"
+                                >
+                                    <Icon name="chat" className="text-lg" />
+                                    Solicitar demostración
+                                </a>
+                                <a
+                                    href="#modulos"
+                                    onClick={scrollToSection}
+                                    className="cta-btn-secondary"
+                                    aria-label="Conocer el sistema — ir a módulos"
+                                >
+                                    <Icon name="visibility" className="text-lg" />
+                                    Conocer el sistema
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
         function App() {
             const [lightboxImg, setLightboxImg] = useState(null);
 
@@ -783,63 +1374,13 @@
                         </div>
                     </section>
 
-                    {/* CTA FINAL */}
-                    <section className="py-48 px-6 relative overflow-hidden bg-[#020617] border-t border-white/5">
-
-                        {/* Background — CSS gradient instead of external Unsplash dependency */}
-                        <div className="absolute inset-0 z-0">
-                            <div className="w-full h-full bg-gradient-to-br from-[#0c1322] via-[#020617] to-[#0a1628] opacity-80"></div>
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/80 to-[#020617]"></div>
-                        </div>
-
-                        {/* Cinematic Volumetric Light */}
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-                            <div className="w-[800px] h-[300px] bg-brand-yellow/15 blur-[120px] rounded-full mix-blend-screen opacity-80"></div>
-                        </div>
-
-                        {/* Technical Blueprint Grid for CTA */}
-                        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)] pointer-events-none z-0"></div>
-
-                        <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center">
-
-                            <h2 className="text-4xl md:text-7xl lg:text-[100px] text-white font-black tracking-tighter mb-8 leading-[0.9] reveal uppercase">
-                                DIGITALIZA TU <br />
-                                AUTOLAVADO <span className="font-black text-brand-yellow px-2">HOY.</span>
-                            </h2>
-
-                            <p className="max-w-2xl text-lg md:text-xl text-slate-400 font-light mb-14 reveal leading-relaxed">
-                                Únete a los propietarios que ya operan con orden, rapidez y la información de su negocio siempre a la mano.
-                            </p>
-
-                            <div className="flex flex-col md:flex-row justify-center items-center gap-6 reveal w-full">
-                                <a
-                                    href={WHATSAPP_URL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-full md:w-auto relative group overflow-hidden bg-brand-yellow text-brand-deep px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.25em] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(251,191,36,0.3)] no-underline text-center"
-                                    aria-label="Solicitar una demostración por WhatsApp"
-                                >
-                                    <span className="relative z-10 flex items-center justify-center gap-4">
-                                        Solicitar una Demostración
-                                    </span>
-                                </a>
-                                <a
-                                    href={WHATSAPP_URL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-full md:w-auto bg-transparent border border-white/10 text-white px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.25em] transition-all duration-500 hover:bg-white hover:text-black no-underline text-center"
-                                    aria-label="Hablar con un asesor por WhatsApp"
-                                >
-                                    Hablar con un Asesor
-                                </a>
-                            </div>
-                        </div>
-                    </section>
+                    {/* CTA FINAL — Premium Cinematic Section */}
+                    <CtaFinal />
 
                     </main>
 
                     {/* FOOTER */}
-                    <footer className="py-20 bg-[#020617] border-t border-white/5 px-6 relative overflow-hidden">
+                    <footer className="py-20 bg-[#020617] px-6 relative overflow-hidden">
                         {/* Subtle glow */}
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-brand-yellow/30 to-transparent"></div>
 
@@ -873,11 +1414,11 @@
                             <div className="flex flex-col items-center md:items-start">
                                 <h4 className="text-white font-bold text-xs uppercase tracking-[0.3em] mb-8">Contacto</h4>
                                 <div className="flex flex-col gap-4 mb-8 text-center md:text-left">
-                                    <p className="text-sm text-slate-400 font-light"><strong className="text-white font-semibold">Teléfono:</strong> +505 5703 7623</p>
+                                    <p className="text-sm text-slate-400 font-light"><strong className="text-white font-semibold">Teléfono:</strong> +505 5704 2498</p>
                                     <p className="text-sm text-slate-400 font-light"><strong className="text-white font-semibold">Instagram:</strong> @hyperbeesolutions</p>
                                 </div>
                                 <div className="flex gap-4">
-                                    <a href="https://wa.me/50557037623" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-brand-yellow hover:text-brand-deep hover:border-brand-yellow transition-colors duration-300">
+                                    <a href="https://wa.me/50557042498" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-brand-yellow hover:text-brand-deep hover:border-brand-yellow transition-colors duration-300">
                                         <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
                                     </a>
                                     <a href="https://www.instagram.com/hyperbeesolutions" target="_blank" rel="noopener noreferrer" aria-label="Seguir en Instagram" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-brand-yellow hover:text-brand-deep hover:border-brand-yellow transition-colors duration-300">
